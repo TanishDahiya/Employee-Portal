@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card">
+						<h1 class="text-center pt-4">REGISTER HERE</h1>
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}" class="alert"
+							role="alert">
+							<p th:text="${session.message.content}"></p>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+
+						<form class="signupForm mt-3" novalidate action="" th:action="@{/do_register}"
+							method="post" th:object="${user}">
+
+
+							<!-- Name field -->
+							<div class="form-group">
+								<label for="name_field" class="form-label">Name</label> <input
+									name="name" type="text" class="form-control "
+									th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}"
+									id="name_field" placeholder="Enter Here" required
+									th:value="${user.name}" />
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+							</div>
+
+
+
+							<!-- Email field -->
+							<div class="form-group">
+								<label for="email_field" class="form-label mt-4">Email</label> <input
+									name="email" type="email" class="form-control"
+									th:classappend="${#fields.hasErrors('email')}?'is-invalid':''"
+									id="email_field" placeholder="Enter Here" required
+									th:value="${user.email}" />
+								<div th:each="e : ${#fields.errors('email')}" th:text="${e}"
+									class="invalid-feedback"></div>
+
+							</div>
+
+
+							<!-- Password field -->
+							<div class="form-group">
+								<label for="password_field" class="form-label mt-4">Password</label>
+								<input name="password" type="password" class="form-control"
+									id="password_field" placeholder="Enter Here" required>
+							</div>
+
+
+							<!-- Role field -->
+<!-- 							<div class="form-group">
+								<label for="role_field" class="form-label">Designation</label> <input
+									name="role" type="text" class="form-control" id="role_field"
+									placeholder="Enter Here" required th:value="${user.role}">
+							</div> -->
+
+							<div class="formButtons">
+								<div><button type="submit" class="btn btn-primary mt-4">Submit</button></div>
+								<div class="formButtonLink"><a class="loginLink" href="/signin">Login Here?</a></div>
+								
+							</div>
+
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

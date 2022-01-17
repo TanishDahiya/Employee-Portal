@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+
+
+	<!-- get log msgs on console -->
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern> [%d{yyyy-MM-dd'T'HH:mm:ss.sss'Z'}] [%C] [%M] [%m] [%-5p]
+				%n%n </pattern>
+		</encoder>
+	</appender>
+
+
+
+	<!-- get log msgs in file -->
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<File>C:\Users\tanish\new-workspace\springboot\springboot\test.log</File>
+		<encoder>
+			<pattern> [%d{yyyy-MM-dd'T'HH:mm:ss.sss'Z'}] [%C] [%M] [%m] [%-5p]
+				%n%n </pattern>
+		</encoder>
+	</appender>
+
+
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
+
+
+
+

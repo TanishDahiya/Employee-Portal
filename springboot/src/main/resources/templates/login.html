@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="wrapper fadeInDown ">
+			<div class="pt-5 pb-5 bg-dark" id="formContent">
+				<!-- Tabs Titles -->
+
+
+
+				<!-- Login Form -->
+					<div th:if="${param.error}" class="alert alert-danger">Invalid username or password</div>
+						<div th:if="${param.logout}" class="alert alert-success">You have been logged out</div>
+				<form class="form" th:action="@{/dologin}" action="#" method="post">
+					<input type="text" id="username" class="fadeIn second new" name="username"
+						placeholder="Username"> 
+					
+						<input type="password" id="password"
+						class="fadeIn third new" name="password" placeholder="password">
+					<input type="submit" class="fadeIn fourth" value="Log In">
+				</form>
+
+				<!-- Registration-->
+				<div id="register-link" class="text-right">
+					<a class="text-info" href="/signup">Register Here?</a>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+

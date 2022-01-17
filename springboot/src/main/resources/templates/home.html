@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<h1 class="header pt-4">TICKET MANAGEMENT APPLICATION</h1>
+
+<div class="stylecontainer">
+	<div class="btn1">
+		<a th:href="@{/user/index}"><button type="button" class="btn btn-dark btn-lg">Sign in</button></a>
+	</div >
+	<div class="btn2">
+		<a th:href="@{/signup/}"><button  type="button" class="btn btn-dark btn-lg"  >Sign up</button></a>
+	</div>
+</div>
+</section>
+
+</body>
+</html>

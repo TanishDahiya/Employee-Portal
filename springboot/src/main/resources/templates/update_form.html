@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="card mr-3 ml-3">
+			<div class="card-body">
+				<h1 class="text-center">Update Ticket</h1>
+
+				<!-- ALERT MESSAGE -->
+				<div th:if="${session.message}" class="container">
+					<div th:classappend="${'alert-'+session.message.type}"
+						class="alert text-center" role="alert">
+						<span th:text="${session.message.content}"> </span>
+					</div>
+					<div th:block th:text="${#session.removeAttribute('message')}"></div>
+				</div>
+
+
+
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<form action="#" th:object="${ticket}" method="POST"
+								th:action="@{/user/process-update}" class="mt-2">
+								
+								<input type="hidden" th:value="${ticket.ticketId}" name="ticketId"/>
+
+
+								<!-- Created By -->
+								<div class="input-group">
+									<div class="input-group-prepend"></div>
+									<input th:value="${ticket.createdby}" required type="text" id="createdby" name="createdby"
+										placeholder="Enter Name here" class="form-control" />
+								</div>
+
+								<!-- Contact Description -->
+								<div class="form-group mt-3">
+									<textarea th:text="${ticket.description}" id="mytextarea"
+										placeholder="Enter ticket description" name="description"
+										class="form-control" rows="10"></textarea>
+								</div>
+								<div class="container text-center">
+									<button class="btn btn-outline-primary">update
+										Ticket</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

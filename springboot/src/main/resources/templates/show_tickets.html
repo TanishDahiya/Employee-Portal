@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="card">
+			<div class="card-body">
+				<h1 class="text-center">All Tickets</h1>
+
+				<table class="table table-dark table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#ID</th>
+							<th scope="col">CreatedBy</th>
+							<th scope="col">Description</th>
+							<th scope="col">Action</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr th:each="c:${tickets}">
+							<th scope="row" th:text="${c.ticketId}"></th>
+							<td th:text="${c.createdby}"></td>
+							<td th:text="${c.description}"></td>
+							<td>
+							<a th:href="@{'/user/delete/'+${c.ticketId}}"><button class="btn btn-danger btn-sm">Delete</button></a>
+							<form method="post" th:action="@{'/user/update-ticket/'+${c.ticketId}}" >
+							<button type="submit" class="btn btn-success btn-sm mt-2">Update</button>
+							</form>
+							
+							</td>
+							
+						</tr>
+				
+			
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
